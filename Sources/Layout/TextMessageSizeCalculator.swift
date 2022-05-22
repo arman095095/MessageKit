@@ -38,20 +38,19 @@ open class TextMessageSizeCalculator: MessageSizeCalculator {
         return isFromCurrentSender ? outgoingMessageLabelInsets : incomingMessageLabelInsets
     }
 
-    open override func messageContainerMaxWidth(for message: MessageType, at indexPath: IndexPath) -> CGFloat {
-        let maxWidth = super.messageContainerMaxWidth(for: message, at: indexPath)
+    open override func messageContainerMaxWidth(for message: MessageType) -> CGFloat {
+        let maxWidth = super.messageContainerMaxWidth(for: message)
         let textInsets = messageLabelInsets(for: message)
         return maxWidth - textInsets.horizontal
     }
 
-    open override func messageContainerSize(for message: MessageType, at indexPath: IndexPath) -> CGSize {
-        let maxWidth = messageContainerMaxWidth(for: message, at: indexPath)
+    open override func messageContainerSize(for message: MessageType) -> CGSize {
+        let maxWidth = messageContainerMaxWidth(for: message)
 
         var messageContainerSize: CGSize
         let attributedText: NSAttributedString
 
-        let textMessageKind = message.kind.textMessageKind
-        switch textMessageKind {
+        switch message.kind {
         case .attributedText(let text):
             attributedText = text
         case .text(let text), .emoji(let text):

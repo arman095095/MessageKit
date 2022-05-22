@@ -1,7 +1,7 @@
 /*
  MIT License
 
- Copyright (c) 2017-2022 MessageKit
+ Copyright (c) 2017-2019 MessageKit
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,14 @@
  */
 
 import Foundation
-import UIKit
 
-public enum MessageInputBarKind: Equatable {
-    case messageInputBar
-    case custom(UIView)
+/// Concrete type of MessageType
+/// 
+/// Use this when you are subclassing calculators and/or cells that needs
+/// a concrete type to handle super's method.
+internal struct ConcreteMessageType: MessageType {
+    let sender: SenderType
+    let messageId: String
+    let sentDate: Date
+    var kind: MessageKind
 }

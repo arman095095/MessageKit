@@ -1,7 +1,7 @@
 /*
  MIT License
 
- Copyright (c) 2017-2022 MessageKit
+ Copyright (c) 2017-2019 MessageKit
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -54,11 +54,9 @@ internal extension MessagesViewController {
             selectedIndexPathForMenu = nil
         }
 
-        currentMenuController.hideMenu()
+        currentMenuController.setMenuVisible(false, animated: false)
 
-        guard let selectedCell = messagesCollectionView.cellForItem(at: selectedIndexPath) as? MessageContentCell else {
-            return
-        }
+        guard let selectedCell = messagesCollectionView.cellForItem(at: selectedIndexPath) as? MessageContentCell else { return }
         let selectedCellMessageBubbleFrame = selectedCell.convert(selectedCell.messageContainerView.frame, to: view)
 
         var messageInputBarFrame: CGRect = .zero
@@ -87,7 +85,8 @@ internal extension MessagesViewController {
             currentMenuController.arrowDirection = .up
         }
 
-        currentMenuController.showMenu(from: view, rect: targetRect)
+        currentMenuController.setTargetRect(targetRect, in: view)
+        currentMenuController.setMenuVisible(true, animated: true)
     }
 
     // MARK: - Helpers

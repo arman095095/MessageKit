@@ -1,7 +1,7 @@
 /*
  MIT License
 
- Copyright (c) 2017-2022 MessageKit
+ Copyright (c) 2017-2019 MessageKit
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,11 @@
  SOFTWARE.
  */
 
-import Foundation
 import UIKit
+import InputBarAccessoryView
 
-public final class MessagesInputContainerView: UIView {}
+@available(*, unavailable, renamed: "InputBarAccessoryView")
+public typealias MessageInputBar = InputBarAccessoryView
+
+@available(*, unavailable, renamed: "InputBarAccessoryViewDelegate")
+public typealias MessageInputBarDelegate = InputBarAccessoryViewDelegate
