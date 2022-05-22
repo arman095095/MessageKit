@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-import Foundation
+import UIKit
 import CoreGraphics
 
 /// A protocol used to represent the data for a link preview message.
